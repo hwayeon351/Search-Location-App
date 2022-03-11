@@ -1,11 +1,13 @@
 package com.example.search_location_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.search_location_app.MapActivity.Companion.SEARCH_RESULT_EXTRA_KEY
 import com.example.search_location_app.databinding.ActivityMainBinding
 import com.example.search_location_app.model.LocationLatLngEntity
 import com.example.search_location_app.model.SearchResultEntity
@@ -41,6 +43,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     private fun initAdapter() {
         searchRecyclerAdapter = SearchRecyclerAdapter {
             Toast.makeText(this, "빌딩이름: ${it.name} 주소: ${it.fullAddress} 위도/경도: ${it.locationLatLng}", Toast.LENGTH_SHORT).show()
+            startActivity(
+                Intent(this@MainActivity, MapActivity::class.java).apply {
+                    putExtra(SEARCH_RESULT_EXTRA_KEY, it)
+                }
+            )
         }
     }
 
