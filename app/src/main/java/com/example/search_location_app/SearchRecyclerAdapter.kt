@@ -12,8 +12,8 @@ class SearchRecyclerAdapter(private val searchResultClickListener: (SearchResult
 
     inner class ViewHolder(private val binding: ItemSearchResultBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindData(data: SearchResultEntity) = with(binding) {
-            titleTextView.text = "제목"
-            subtextTextView.text = "부제목"
+            titleTextView.text = data.name
+            subtextTextView.text = data.fullAddress
         }
 
         fun bindViews(data: SearchResultEntity) {
