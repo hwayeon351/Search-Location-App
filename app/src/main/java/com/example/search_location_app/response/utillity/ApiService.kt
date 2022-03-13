@@ -1,6 +1,8 @@
 package com.example.search_location_app.response.utillity
 
+import com.example.search_location_app.response.address.AddressInfoResponse
 import com.example.search_location_app.response.search.SearchResponse
+import com.example.search_location_app.response.utillity.Url.GET_TMAP_REVERSE_GEO_CODE
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -28,8 +30,7 @@ interface ApiService {
         @Query("centerLat") centerLat: String? = null
     ): Response<SearchResponse>
 
-    /*
-    @GET(Url.GET_TMAP_REVERSE_GEO_CODE)
+    @GET(com.example.search_location_app.response.utillity.Url.GET_TMAP_REVERSE_GEO_CODE)
     suspend fun getReverseGeoCode(
         @Header("appKey") appKey: String = Key.TMAP_API,
         @Query("version") version: Int = 1,
@@ -39,6 +40,4 @@ interface ApiService {
         @Query("coordType") coordType: String? = null,
         @Query("addressType") addressType: String? = null
     ): Response<AddressInfoResponse>
-
-     */
 }
